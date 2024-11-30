@@ -12,6 +12,7 @@
     "pg": "*",
     "pug": "*",
     "lodash": "4.17.20",
-    "express-rate-limit": "^7.4.1"
+    "express-rate-limit": "^7.4.1",
+    "escape-html": "^1.0.3"
   }
 }
