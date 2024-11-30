@@ -1,6 +1,7 @@
 var { Client } = require('pg')
 var express = require("express");
 var RateLimit = require('express-rate-limit');
+var escapeHtml = require('escape-html');
 
 var port = 8080;
 
@@ -38,13 +39,13 @@ var main = async () => {
   app.use(limiter);
 
   app.get('/hello', function (req, res) {
-    res.send(`Hello, ${req.query.name}`)
+    res.send(`Hello, ${escapeHtml(req.query.name)}`)
   })
 
   app.set("view engine", "pug");
 
   app.get('/view', function (req, res) {
-    res.render("hello", { name: req.query.name })
+    res.render("hello", { name: escapeHtml(req.query.name) })
   })
 
   app.get('/user/:id', async function (req, res) {
